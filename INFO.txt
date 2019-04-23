@@ -1,0 +1,2 @@
+SkidCath is a tool for cathing qbot/mirai skids, by turning your server into a honeypot.
+
