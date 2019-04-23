@@ -53,5 +53,10 @@ def server():
 				conn.close()
 		except: pass
 if __name__ == '__main__':
+	print("""
+|__;-----------------;__|
+|__; Dump's SkidCath ;__|
+|__;-----------------;__|
+""")
 	platform_check()
 	server()
