@@ -53,7 +53,7 @@ def server():
 				conn.close()
 		except: pass
 if __name__ == '__main__':
-	print("""
+	print(colors.dark_yellow  + """
 |__;-----------------;__|
 |__; Dump's SkidCath ;__|
 |__;-----------------;__|
