@@ -3,6 +3,12 @@
 ######################
 #    RUN AS ROOT.    #
 ######################
+#nano /etc/ssh/sshd_config
+#   Find Port 22
+#   Change to another port Such as Port 2222
+#   Then reboot
+#and start up skidcath.py
+######################
 __author__ = "Dump"
 
 import socket
