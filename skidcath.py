@@ -3,16 +3,11 @@
 ######################
 #    RUN AS ROOT.    #
 ######################
-#nano /etc/ssh/sshd_config
-#   Find Port 22
-#   Change to another port Such as Port 2222
-#   Then reboot
-#and start up skidcath.py
-######################
 __author__ = "Dump"
 
 import socket
 import sys
+import threading
 import time
 
 try:
@@ -27,27 +22,27 @@ def platform_check():
 		quit()
 	else:
 		print(colors.green + "[+] Platform check done!")
-def server():
+def server(port):
 	logfile = "/etc/SkidCath_LOG.log"
 	s = socket.socket()
 	print(colors.yellow)
-	print("Attempting to bind socket...")
+	#print("Attempting to bind socket...")
 	time.sleep(0.5)
 	try:
-		s.bind(("", 22))
+		s.bind(("", port))
 	except Exception as e:
 		print(colors.red + "[-] Failed to bind socket, due to:" + str(e) +colors.end)
 		quit()
-	print(colors.green + "[+] Socket binded successfully!")
-	print(colors.yellow + "Attempting to set up listener...")
+	#print(colors.green + "[+] Socket binded successfully!")
+	#print(colors.yellow + "Attempting to set up listener...")
 	time.sleep(0.5)
 	try:
 		s.listen(10)
 	except Exception as e:
 		print(colors.red + "[-] Failed to set up listener, due to:" + str(e) + colors.end)
                 quit()
-	print(colors.green + "[+] Listener setup done!")
-	print(colors.yellow + "Server runnning, waiting for connections..." + colors.end)
+	#print(colors.green + "[+] Listener setup done!")
+	#print(colors.yellow + "Server runnning, waiting for connections..." + colors.end)
 	while 1:
 		try:
 			conn, addr = s.accept()
@@ -65,4 +60,7 @@ if __name__ == '__main__':
 |__;-----------------;__|
 """)
 	platform_check()
-	server()
+	ports = [22, 23, 37215, 53413, 8083, 49152]
+	for port in ports:
+		threading.Thread(target=server, args=(port,)).start()
+	print(colors.yellow + "Server runnning, waiting for connections..." + colors.end)
