@@ -3,7 +3,7 @@
 ######################
 #    RUN AS ROOT.    #
 ######################
-__author__ = "Dump"
+__author__ = "XynMaps/XantiSec/Dump"
 
 import socket
 import sys
